@@ -1,40 +1,45 @@
-const functions = require ("./functions")
+const functions = require("./functions")
 
-test('ToBe', () =>  {
-    expect(functions.add(2, 2)).toBe(4)
-})
+const welcome = () => console.log('Running test before all functon')
 
-test('Not to Be', () =>  {
-    expect(functions.add(2, 2)).not.toBe(6)
-})
+describe('Test suite with different funcitons ', () => {
+    // beforeAll (() => welcome ())
+    beforeEach (() => welcome ())
+    test('ToBe', () => {
+        expect(functions.add(2, 2)).toBe(4)
+    })
 
-test('IsNull', () =>  {
-    expect(functions.isNull()).toBeNull()
-})
+    test('Not to Be', () => {
+        expect(functions.add(2, 2)).not.toBe(6)
+    })
 
-test('falsy', () =>  {
-    expect(functions.checkValue(null)).toBeFalsy()
-})
+    test('IsNull', () => {
+        expect(functions.isNull()).toBeNull()
+    })
 
-test('not toEqual', () =>  {
-    expect(functions.createUser()).not.toEqual({
-        fistName: 'manoj', 
-        lastname: 'Chambarge'
+    test('falsy', () => {
+        expect(functions.checkValue(null)).toBeFalsy()
+    })
+
+    test('not toEqual', () => {
+        expect(functions.createUser()).not.toEqual({
+            fistName: 'manoj',
+            lastname: 'Chambarge'
+        })
+    })
+
+    test('tobeLessthanOrEqual', () => {
+        const value1 = 1000
+        const value2 = 500
+        expect(value1 + value2).toBeLessThanOrEqual(1600)
+    })
+
+    test('Regex toMatch', () => {
+        expect('Manoj').toMatch(/j/)
+    })
+
+    test('contains', () => {
+        userNames = ['manoj', 'manju']
+        expect(userNames).toContain('manoj')
     })
 })
-
-test('tobeLessthanOrEqual', () =>  {
-    const value1 = 1000
-    const value2 = 500 
-    expect(value1 + value2).toBeLessThanOrEqual(1600)
-})
-
-test('Regex toMatch', () =>  {
-    expect('Manoj').toMatch(/j/)
-})
-
-test('contains', () =>  {
-    userNames = ['manoj', 'manju']
-    expect(userNames).toContain('manoj')
-})
-
